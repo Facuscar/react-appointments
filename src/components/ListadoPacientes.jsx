@@ -1,5 +1,10 @@
 function ListadoPacientes() {
-    return ( <h2>Desde listado pacientes</h2> );
+    return ( 
+        <div className="w-1/2 lg-3/5">
+            <p>Listado pacientes</p>
+        </div>
+    
+    );
 }
 
 export default ListadoPacientes;
