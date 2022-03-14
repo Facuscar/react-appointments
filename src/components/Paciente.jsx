@@ -20,8 +20,20 @@ function Paciente(props) {
 
                 <p className="font-bold mb-3 text-gray-700 uppercase">Sintomas:
                     <span className="font-normal normal-case"> {props.paciente.sintomas} </span>
-                </p>     
-            </div>
+                </p>
+
+                <div className="flex justify-between">
+                    <button type="button" className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-md" 
+                    onClick = {() => props.setPaciente(props.paciente)}>
+                     Editar
+                    </button>
+                    <button type="button" className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-md">
+                     Eliminar
+                    </button>
+                </div>     
+        </div>
+
+        
 
      );
 }
