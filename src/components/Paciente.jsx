@@ -1,25 +1,25 @@
-function Paciente() {
+function Paciente(props) {
     return ( 
 
         <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
                 <p className="font-bold mb-3 text-gray-700 uppercase">Nombre:
-                    <span className="font-normal normal-case"> Hook</span>
+                    <span className="font-normal normal-case"> {props.paciente.nombre} </span>
                 </p>
 
                 <p className="font-bold mb-3 text-gray-700 uppercase">Propietario:
-                <span className="font-normal normal-case"> Facu</span>
+                <span className="font-normal normal-case"> {props.paciente.propietario} </span>
                 </p>
 
                 <p className="font-bold mb-3 text-gray-700 uppercase">Email:
-                <span className="font-normal normal-case"> facuscar@hotmail.com</span>
+                <span className="font-normal normal-case">  {props.paciente.email} </span>
                 </p>
                 
                 <p className="font-bold mb-3 text-gray-700 uppercase">Fecha alta:
-                <span className="font-normal normal-case"> 10 de Enero de el 2014</span>
+                <span className="font-normal normal-case"> {props.paciente.fecha} </span>
                 </p>
 
                 <p className="font-bold mb-3 text-gray-700 uppercase">Sintomas:
-                    <span className="font-normal normal-case"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa molestiae animi qui repellendus eligendi illo voluptas labore expedita itaque esse, quas non. Eveniet debitis, id error laudantium ducimus repellendus!</span>
+                    <span className="font-normal normal-case"> {props.paciente.sintomas} </span>
                 </p>     
             </div>
 

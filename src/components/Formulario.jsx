@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
+import Error from './Error'
 
-function Formulario() {
+function Formulario({pacientes, setPacientes}) {
 
     const [nombre, setNombre] = useState('');
     const [propietario, setPropietario] = useState('');
@@ -9,6 +10,11 @@ function Formulario() {
     const [sintomas, setSintomas] = useState('');
     const [error, setError]  = useState(false);
 
+    const generarId = () => {
+        const random = Math.random().toString(36).substring(2);
+        const fecha = Date.now().toString(36);
+        return random + fecha
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
        //Validacion del formulario
@@ -19,15 +25,35 @@ function Formulario() {
        }
 
        setError(false);
+
+       //Objeto de paciente
+       const objetoPaciente = {
+           nombre,
+           propietario,
+           email,
+           fecha,
+           sintomas,
+           id: generarId()
+       }
+
+       //Guardamos el nuevo paciente dentro del array de pacientes
+       setPacientes([...pacientes, objetoPaciente])
+
+       //Reiniciamos el formulario
+       setNombre('');
+       setPropietario('');
+       setEmail('');
+       setFecha('');
+       setSintomas('');
     }
 
     return (
         <div className="md:w-1/2 lg:w-2/5">
             <h2 className="font-black text-3xl text-center">Seguimiento pacientes</h2>
-            <p className="text-lg mt-5">Añade pacientes y <span className="text-indigo-600 font-bold"> Administralos</span></p>
+            <p className="text-lg mt-5 text-center">Añade pacientes y <span className="text-indigo-600 font-bold"> Administralos</span></p>
 
             <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg py-10 px-5 mb-3">
-                {error && <div><p className='bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md'>Todos los campos son obligatorios</p></div> }
+                {error && <Error mensaje='Todos los campos son obligatorios'/> }
                 <div className="mb-5">
                     <label className="block text-gray-700 uppercase" htmlFor="mascota">Nombre mascota</label>
                     <input id="mascota" type="text" placeholder="Nombre de la mascota"  className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded" value={nombre} onChange= {(e) => setNombre(e.target.value) }/>
