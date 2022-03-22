@@ -13,7 +13,7 @@ function ListadoPacientes(props) {
                 
                     {props.pacientes.length !== 0 ? 
                     props.pacientes.map( paciente => (
-                        <Paciente key={paciente.id} paciente={paciente} setPaciente={props.setPaciente}/>
+                        <Paciente key={paciente.id} paciente={paciente} setPaciente={props.setPaciente} eliminarPaciente={props.eliminarPaciente}/>
                     )) :
                     (
                         <p className="text-center">No hay pacientes aún</p>
